@@ -86,7 +86,7 @@ jQuery(document).ready(function($) {
 ===  SMOOTH SCROLL NAVIGATION     ====
 =================================== */
 jQuery(document).ready(function(){
-  jQuery('#menu-primary a[href*=#]:not([href=#]), a.woocommerce-review-link[href*=#]:not([href=#]), a.post-comments[href*=#]:not([href=#])').bind('click',function () {
+  jQuery('#menu-primary a[href*="#"]:not([href="#"]), a.woocommerce-review-link[href*="#"]:not([href="#"]), a.post-comments[href*="#"]:not([href="#"])').bind('click',function () {
     var headerHeight;
     var hash    = this.hash;
     var idName  = hash.substring(1);    // get id name
@@ -442,7 +442,7 @@ var isMobile = {
 
     function initMainNavigation( container ) {
         // Add dropdown toggle that display child menu items.
-        container.find( '.menu-item-has-children > a' ).after( '<button class="dropdown-toggle" aria-expanded="false">' + screenReaderText.expand + '</button>' );
+        container.find( '.menu-item-has-children > a' ).after( '<button class="dropdown-toggle" aria-expanded="false"><span class="dropdown-toggle-inner">' + screenReaderText.expand + '</span></button>' );
 
 		// Toggle buttons and submenu items with active children menu items.
 		container.find( '.current-menu-ancestor > button' ).addClass( 'toggled-on' );
@@ -457,7 +457,7 @@ var isMobile = {
 			_this.toggleClass( 'toggled-on' );
 			_this.next( '.children, .sub-menu' ).toggleClass( 'toggled-on' );
 			_this.attr( 'aria-expanded', _this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
-			_this.html( _this.html() === screenReaderText.expand ? screenReaderText.collapse : screenReaderText.expand );
+			_this.find( '.dropdown-toggle-inner' ).html( _this.html() === screenReaderText.expand ? screenReaderText.collapse : screenReaderText.expand );
 		});
     }
     
